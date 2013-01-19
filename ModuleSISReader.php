@@ -1,25 +1,6 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
- * Contao Open Source CMS
- * Copyright (C) 2005-2011 Leo Feyer
- *
- * Formerly known as TYPOlight Open Source CMS.
- *
- * This program is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation, either
- * version 3 of the License, or (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- * 
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program. If not, please visit the Free
- * Software Foundation website at <http://www.gnu.org/licenses/>.
- *
  * PHP version 5
  * @copyright  Oliver Lohoff 
  * @author     Oliver Lohoff, info@contao4you.de 
@@ -28,7 +9,7 @@
  * @filesource
  */
 
-
+namespace Contao4You;
 /**
  * Class sis-reader 
  *
@@ -36,7 +17,7 @@
  * @author     Oliver Lohoff, info@contao4you.de 
  * @package    Controller
  */
-class ModuleSISReader extends Module
+class ModuleSISReader extends \Module
 {
 
 	/**
@@ -51,7 +32,7 @@ class ModuleSISReader extends Module
 	{
 		if (TL_MODE == 'BE')
 		{
-			$objTemplate = new BackendTemplate('be_wildcard');
+			$objTemplate = new \BackendTemplate('be_wildcard');
 
 			$objTemplate->wildcard = '### SIS - Reader ###';
 			$objTemplate->title = $this->headline;
@@ -83,7 +64,7 @@ class ModuleSISReader extends Module
 			case 'letzten15spieleliga'      : $tpl = 'sis_letztenspiele'; break;
 			case 'letzten15spieleliga'      : $tpl = 'sis_letztenspiele'; break;
 		}
-		$objTemplate = new FrontendTemplate($tpl);
+		$objTemplate = new \FrontendTemplate($tpl);
 		$objTemplate->sis_verein = $this->strVerein;
 		$objTemplate->sis_liga    = $this->Template->sis_liga;
 		$objTemplate->xmldatei = $xmldatei;
@@ -113,7 +94,7 @@ class ModuleSISReader extends Module
 		}
 
 		// Den Dateinamen bestimmen
-		$datei = 'system/html/sis_' . substr(md5($strArt . $auf), 0,8) . ".xml";
+		$datei = 'system/tmp/sis_' . substr(md5($strArt . $auf), 0,8) . ".xml";
 		// Url generieren
 		$this->sisUrl = "http://sis-handball.de/xmlexport/xml_dyn.aspx?art=$art&auf=$auf&user=$login&pass=$pass";
 		if (file_exists($datei))

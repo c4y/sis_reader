@@ -23,8 +23,8 @@
     <?php if ($spiel->HeimNr == $this->sis_verein || $spiel->GastNr == $this->sis_verein): ?>
     <tr class="<?php echo ($counter % 2 == 0) ? "even" : "odd"; ?>">
         <td class="col_0"><?php echo date('d.m.Y', strtotime($spiel->SpielVon)); ?></td>
-        <td class="col_1<?php if($spiel->HeimNr == $this->sis_verein) echo ' hse'; ?>"><?php echo $spiel->Heim; ?></td>
-        <td class="col_2<?php if($spiel->GastNr == $this->sis_verein) echo ' hse'; ?>"><?php echo $spiel->Gast; ?></td>
+        <td class="col_1<?php if($spiel->HeimNr == $this->sis_verein) echo ' verein'; ?>"><?php echo $spiel->Heim; ?></td>
+        <td class="col_2<?php if($spiel->GastNr == $this->sis_verein) echo ' verein'; ?>"><?php echo $spiel->Gast; ?></td>
         <td class="col_3"><?php if($spiel->Tore1 > 0) echo $spiel->Tore1 . ":" . $spiel->Tore2 . " (" . $spiel->Tore01 . ":" . $spiel->Tore02 . ")"; ?></td>
     </tr>
     <?php $counter++; ?>
