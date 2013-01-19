@@ -1,0 +1,34 @@
+<?php
+   if (file_exists($this->xmldatei))
+   {
+       $xml = simplexml_load_file($this->xmldatei);
+   }
+   $counter = 0;
+?>
+
+<?php if ($xml->Spiel->count() >= 1) : ?>
+<table>
+    <thead>
+    <tr>
+        <th class="col_0">Datum</th>
+        <th class="col_1">Heim</th>
+        <th class="col_2">Gast</th>
+        <th class="col_3">Liga</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($xml->Spiel as $spiel): ?>
+    <tr class="<?php echo ($counter % 2 == 0) ? "even" : "odd"; ?>">
+        <td class="col_0"><?php echo date('d.m.Y', strtotime($spiel->SpielVon)); ?></td>
+        <td class="col_1"><?php echo $spiel->Heim; ?></td>
+        <td class="col_2"><?php echo $spiel->Gast; ?></td>
+        <?php $arrLiga = preg_split('/[\s,]+/', $spiel->LigaName); ?>
+        <td class="col_3"><?php echo $arrLiga[1] . " " . $arrLiga[2]; ?></td>
+    </tr>
+    <?php $counter++; ?>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php else: ?>
+<p>Aktuell keine Daten vorhanden.</p>
+<?php endif; ?>

@@ -1,0 +1,38 @@
+<?php
+    $anzHeimspiele = 15;
+    $counter = 0;
+   if (file_exists($this->xmldatei))
+   {
+       $xml = simplexml_load_file($this->xmldatei);
+   }
+?>
+
+<div class="sis_spiele">
+<?php if ($xml->Spiel->count() >= 1) : ?>
+<table>
+    <thead>
+    <tr>
+        <th class="col_0">Datum</th>
+        <th class="col_1">Heim</th>
+        <th class="col_2">Gast</th>
+        <th class="col_3">Ergebnis</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($xml->Spiel as $spiel): ?>
+    <?php if ($spiel->HeimNr == $this->sis_verein || $spiel->GastNr == $this->sis_verein): ?>
+    <tr class="<?php echo ($counter % 2 == 0) ? "even" : "odd"; ?>">
+        <td class="col_0"><?php echo date('d.m.Y', strtotime($spiel->SpielVon)); ?></td>
+        <td class="col_1<?php if($spiel->HeimNr == $this->sis_verein) echo ' hse'; ?>"><?php echo $spiel->Heim; ?></td>
+        <td class="col_2<?php if($spiel->GastNr == $this->sis_verein) echo ' hse'; ?>"><?php echo $spiel->Gast; ?></td>
+        <td class="col_3"><?php if($spiel->Tore1 > 0) echo $spiel->Tore1 . ":" . $spiel->Tore2 . " (" . $spiel->Tore01 . ":" . $spiel->Tore02 . ")"; ?></td>
+    </tr>
+    <?php $counter++; ?>
+    <?php endif; ?>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php else : ?>
+<p>Aktuell keine Daten vorhanden.</p>
+<?php endif; ?>
+</div>

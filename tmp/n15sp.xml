@@ -1,0 +1,59 @@
+<?xml version="1.0" standalone="yes"?>
+
+<NaechsteSpiele>
+
+  <Spiel>
+
+    <Liga>001512505501501000000000000000000001002</Liga>
+
+    <Aktualisierungsdatum>2011-06-10T20:16:05.067+02:00</Aktualisierungsdatum>
+
+    <SpielDatum>2011-09-11T00:00:00+02:00</SpielDatum>
+
+    <Mannschaft1>001512505501501000000000000000000001015</Mannschaft1>
+
+    <Mannschaft2>001512505501501000000000000000000001008</Mannschaft2>
+
+    <Tore01>0</Tore01>
+
+    <Tore02>0</Tore02>
+
+    <Tore1>0</Tore1>
+
+    <Tore2>0</Tore2>
+
+    <Punkte1>0</Punkte1>
+
+    <Punkte2>0</Punkte2>
+
+    <Halle>1310104422</Halle>
+
+    <Schiri>0</Schiri>
+
+    <Anmerkung />
+
+    <SpielBericht />
+
+    <SpielVon>2011-09-11T17:00:00+02:00</SpielVon>
+
+    <SpielBis>2011-09-11T18:29:00+02:00</SpielBis>
+
+    <Heim>HSG Gütersloh</Heim>
+
+    <HeimNr>1310104039</HeimNr>
+
+    <Gast>HSE Hamm</Gast>
+
+    <GastNr>1310207036</GastNr>
+
+    <HallenName>422 Schulzentrum Nord Gütersloh</HallenName>
+
+    <HallenStrasse>Ahornallee (nähe Kahlertstraße)</HallenStrasse>
+
+    <HallenOrt>33330 Gütersloh</HallenOrt>
+
+    <LigaName>0011 Oberliga Männer</LigaName>
+
+    <GespannName>noch nicht angesetzt !!!</GespannName>
+
+  </Spiel>

@@ -1,0 +1,40 @@
+<?php
+   if (file_exists($this->xmldatei))
+   {
+       $xml = simplexml_load_file($this->xmldatei);
+   }
+   $counter = 0;
+?>
+<div class="sis_tabelle">
+<table>
+    <thead>
+    <tr>
+        <th class="col_0">Pl.</th>
+        <th class="col_1">Verein</th>
+        <th class="col_2">Sp.</th>
+        <th class="col_3">G</th>
+        <th class="col_4">U</th>
+        <th class="col_5">V</th>
+        <th class="col_6">T</th>
+        <th class="col_7">+/-</th>
+        <th class="col_8">Pkt</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($xml->Platzierung as $platzierung): ?>
+    <tr class="<?php echo ($counter % 2 == 0) ? "even" : "odd"; ?>">
+        <td class="col_0"><?php echo $platzierung->Nr; ?></td>
+        <td class="col_1"><?php echo $platzierung->Name; ?></td>
+        <td class="col_2"><?php echo $platzierung->Spiele; ?></td>
+        <td class="col_3"><?php echo $platzierung->Gewonnen; ?></td>
+        <td class="col_4"><?php echo $platzierung->Unentschieden; ?></td>
+        <td class="col_5"><?php echo $platzierung->Verloren; ?></td>
+        <td class="col_6"><?php echo $platzierung->TorePlus . ":" . $platzierung->ToreMinus; ?></td>
+        <td class="col_7"><?php echo $platzierung->D; ?></td>
+        <td class="col_8"><?php echo $platzierung->PunktePlus . ":" . $platzierung->PunkteMinus; ?></td>
+    </tr>
+    <?php $counter++; ?>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+</div>

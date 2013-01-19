@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="yes"?>
+<TabelleGesamtMitAK>
+  <Spielklasse>
+    <Liga>001512505501502000000000000000000001000</Liga>
+    <Name>0015 Oberliga Frauen</Name>
+    <DV>0</DV>
+    <Aufstiegsplaetze>0</Aufstiegsplaetze>
+    <Abstiegsplaetze>0</Abstiegsplaetze>
+  </Spielklasse>
+  <Platzierung>
+    <Nr>1</Nr>
+    <Verein>001512505501502000000000000000000001001</Verein>
+    <Spiele>0</Spiele>
+    <SpieleInsgesamt>24</SpieleInsgesamt>
+    <Gewonnen>0</Gewonnen>
+    <Unentschieden>0</Unentschieden>
+    <Verloren>0</Verloren>
+    <TorePlus>0</TorePlus>
+    <ToreMinus>0</ToreMinus>
+    <D>0</D>
+    <PunktePlus>0</PunktePlus>
+    <PunkteMinus>0</PunkteMinus>
+    <Name>TSV Hahlen</Name>
+  </Platzierung>
+ 

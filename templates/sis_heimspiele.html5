@@ -1,0 +1,53 @@
+<?php
+    $anzHeimspiele = 15;
+    $counter = 0;
+   if (file_exists($this->xmldatei))
+   {
+       $xml = simplexml_load_file($this->xmldatei);
+   }
+   $counter = 0;
+   $anzeintraege = $xml->count();
+?>
+<?php if ($xml->Spiel->count() >= 1) : ?>
+
+<table>
+    <thead>
+    <tr>
+        <th class="col_0">Datum</th>
+        <th class="col_1">Heim</th>
+        <th class="col_2">Gast</th>
+        <th class="col_3">Liga</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php 
+    	foreach ($xml->Spiel as $spiel)
+    	{
+    		$aktDatum   = strtotime($spiel->SpielDatum);
+    		$spielDatum = time();
+    		if (($spiel->HeimNr == $this->sis_verein)  && ($aktDatum >= $spielDatum))
+    		{
+				
+		    	$arrData[$counter]['datum'] = date('d.m.Y', strtotime($spiel->SpielVon));
+    			$arrData[$counter]['heim']  = $spiel->Heim;
+		    	$arrData[$counter]['gast']  = $spiel->Gast;
+		    	$arrLiga = preg_split('/[\s,]+/', $spiel->LigaName);
+    			$arrData[$counter]['liga']  = $arrLiga[1] . " " . $arrLiga[2];
+    			$counter++;
+    		}
+    	}
+    ?>
+    
+    <?php for ($i=count($arrData)-1; $i>=count($arrData)-15; $i--): ?>
+    <tr class="<?php echo ($i % 2 == 0) ? "even" : "odd"; ?>">
+        <td class="col_0"><?php echo $arrData[$i]['datum']; ?></td>
+        <td class="col_1"><?php echo $arrData[$i]['heim'];; ?></td>
+        <td class="col_2"><?php echo $arrData[$i]['gast']; ?></td>
+        <td class="col_3"><?php echo $arrData[$i]['liga']; ?></td>
+    </tr>
+    <?php endfor; ?>
+    </tbody>
+</table>
+<?php else : ?>
+<p>Aktuell keine Daten vorhanden.</p>
+<?php endif; ?>
